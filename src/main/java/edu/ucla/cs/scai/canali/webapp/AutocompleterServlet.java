@@ -5,16 +5,18 @@
  */
 package edu.ucla.cs.scai.canali.webapp;
 
-import com.google.gson.Gson;
-import edu.ucla.cs.scai.canali.core.autocompleter.AutocompleteObject;
-import edu.ucla.cs.scai.canali.core.autocompleter.AutocompleteService;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import edu.ucla.cs.scai.canali.core.autocompleter.AutocompleteObject;
+import edu.ucla.cs.scai.canali.core.autocompleter.AutocompleteService;
+import edu.ucla.cs.scai.canali.webapp.utils.WebAppUtils;
 
 /**
  *
@@ -40,6 +42,8 @@ public class AutocompleterServlet extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+    	WebAppUtils.printParameters(this.getServletName(), request);
+    	
         response.setContentType("application/json;charset=UTF-8");
 
         String query = request.getParameter(QUERY);
